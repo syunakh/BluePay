@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BluePayPayments.Requests
+namespace BluePayPayments.Requests.Base
 {
     public abstract class AuthorizeRequest : BaseRequest
     {

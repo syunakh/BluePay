@@ -1,4 +1,4 @@
-﻿namespace BluePayPayments.Requests
+﻿namespace BluePayPayments.Requests.Base
 {
     public abstract class CustomerInfo
     {

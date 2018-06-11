@@ -1,5 +1,6 @@
 ﻿using BluePayPayments.Extensions;
 using BluePayPayments.Requests;
+using BluePayPayments.Requests.Base;
 using System;
 using System.Net;
 using System.Net.Http;

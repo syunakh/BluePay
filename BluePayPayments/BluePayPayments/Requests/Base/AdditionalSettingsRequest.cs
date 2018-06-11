@@ -1,8 +1,7 @@
 ﻿using System;
 
-namespace BluePayPayments.Requests
+namespace BluePayPayments.Requests.Base
 {
-
     public class AdditionalSettingsRequest
     {
         /// <summary>

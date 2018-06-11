@@ -1,4 +1,6 @@
 ﻿using BluePayPayments.Requests;
+using BluePayPayments.Requests.Base;
+
 using System.Threading.Tasks;
 
 namespace BluePayPayments

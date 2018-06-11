@@ -1,6 +1,7 @@
-﻿using System;
+﻿using BluePayPayments.Requests.Base;
+
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BluePayPayments.Requests
 {
