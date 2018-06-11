@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluePayPayments", "BluePayPayments\BluePayPayments.csproj", "{9F6FDF1D-C1A7-4CC9-A8F6-F633DE71A4A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluePayPayments.Tests", "BluePayPayments.Tests\BluePayPayments.Tests.csproj", "{7748DE30-71DA-4E52-A163-98C1565F49AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F6FDF1D-C1A7-4CC9-A8F6-F633DE71A4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6FDF1D-C1A7-4CC9-A8F6-F633DE71A4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F6FDF1D-C1A7-4CC9-A8F6-F633DE71A4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F6FDF1D-C1A7-4CC9-A8F6-F633DE71A4A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7748DE30-71DA-4E52-A163-98C1565F49AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7748DE30-71DA-4E52-A163-98C1565F49AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7748DE30-71DA-4E52-A163-98C1565F49AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7748DE30-71DA-4E52-A163-98C1565F49AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D041DF9-A591-4805-B7F2-0352E8C0DC5C}
+	EndGlobalSection
+EndGlobal
