@@ -14,8 +14,8 @@ namespace BluePayPayments.Tests
             {
                 if (_bluePayClient == null)
                 {
-                    var keys = JsonConvert.DeserializeObject<BluePayKeys>(File.ReadAllText(@"key.json"));
-                    _bluePayClient = new BluePayClient(keys.AccountId, keys.SecretKey, keys.Sandbox);
+                    var keys = JsonConvert.DeserializeObject<BluePayKeys>(File.ReadAllText(@"./../../../keys.json"));
+                    _bluePayClient = new BluePayClient(keys.AccountId, keys.SecretKey, !keys.Sandbox);
                 }
 
                 return _bluePayClient;

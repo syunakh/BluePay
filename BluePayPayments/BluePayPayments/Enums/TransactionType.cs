@@ -11,11 +11,4 @@
         CREDIT,
         AGG
     }
-
-    public enum PaymentType
-    {
-        CREDIT,
-        DEBIT,
-        ACH
-    }
 }

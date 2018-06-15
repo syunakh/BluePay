@@ -1,4 +1,5 @@
 ﻿using System;
+using BluePayPayments.Attributes;
 
 namespace BluePayPayments.Requests.Base
 {

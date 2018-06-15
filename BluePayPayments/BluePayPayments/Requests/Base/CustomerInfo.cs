@@ -1,4 +1,6 @@
-﻿namespace BluePayPayments.Requests.Base
+﻿using BluePayPayments.Attributes;
+
+namespace BluePayPayments.Requests.Base
 {
     public class CustomerInfo : IPropertyContainer
     {

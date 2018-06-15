@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BluePayPayments.Attributes;
 
 namespace BluePayPayments.Requests.Base
 {

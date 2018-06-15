@@ -9,13 +9,6 @@ namespace BluePayPayments.Tests
     [TestClass]
     public class BluePayClientTests : BaseTests
     {
-        
-
-        public BluePayClientTests()
-        {
-            
-        }
-
         [TestMethod]
         public async Task AuthorizeTest()
         {
@@ -35,7 +28,9 @@ namespace BluePayPayments.Tests
 
             request.Settings.AmountFood = 1;
 
-            await BluePayClient.AuthorizeAsync(request);
+            var response = await BluePayClient.AuthorizeAsync(request);
+
+            Assert.IsTrue(response.Status == Enums.StatusReponse.Approved);
         }
     }
 }

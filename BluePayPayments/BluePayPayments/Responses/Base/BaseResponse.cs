@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using BluePayPayments.Enums;
+using Newtonsoft.Json;
 
 namespace BluePayPayments.Responses.Base
 {
     public class BaseResponse
     {
         [JsonProperty("TRANS_TYPE")]
-        public string TransactionType { get; set; }
+        public TransactionType TransactionType { get; set; }
 
         [JsonProperty("REBID")]
         public string Rebid { get; set; }
@@ -32,6 +33,6 @@ namespace BluePayPayments.Responses.Base
         public string TransactionId { get; set; }
 
         [JsonProperty("STATUS")]
-        public string Status { get; set; }
+        public StatusReponse Status { get; set; }
     }
 }

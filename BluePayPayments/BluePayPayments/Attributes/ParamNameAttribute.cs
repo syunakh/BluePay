@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BluePayPayments
+namespace BluePayPayments.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class ParamNameAttribute : Attribute
