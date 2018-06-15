@@ -12,6 +12,8 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+BluePayPayments/BluePayPayments.Tests/keys.json
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -289,4 +291,3 @@ __pycache__/
 *.btm.cs 
 *.odx.cs
 *.xsd.cs
-BluePayPayments/BluePayPayments.Tests/keys.json

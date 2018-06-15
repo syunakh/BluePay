@@ -1,14 +1,14 @@
-﻿using BluePayPayments.Extensions;
-using BluePayPayments.Http;
-using BluePayPayments.Requests;
-using BluePayPayments.Requests.Base;
-using BluePayPayments.Responses.Base;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using BluePayPayments.Extensions;
+using BluePayPayments.Http;
+using BluePayPayments.Requests;
+using BluePayPayments.Requests.Base;
+using BluePayPayments.Responses.Base;
 
 namespace BluePayPayments
 {
