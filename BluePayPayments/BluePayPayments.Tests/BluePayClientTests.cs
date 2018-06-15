@@ -66,7 +66,7 @@ namespace BluePayPayments.Tests
                 TransactionId = response.TransactionId
             });
 
-            Assert.Equals(Enums.StatusResponse.Approved, captureResponse.Status);
+            Assert.IsTrue(Enums.StatusResponse.Approved == captureResponse.Status);
         }
 
         [TestMethod]

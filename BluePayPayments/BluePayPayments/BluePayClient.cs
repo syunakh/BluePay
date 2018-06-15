@@ -70,7 +70,7 @@ namespace BluePayPayments
         public async Task<BaseResponse> CaptureAsync(CaptureRequest request)
         {
             var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
-            var prms = request.ToDictionaryParams(Mode,calcMD5,_apiAccountId);
+            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
 
             var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
 
