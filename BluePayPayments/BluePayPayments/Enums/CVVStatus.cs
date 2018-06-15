@@ -8,7 +8,7 @@ namespace BluePayPayments.Enums
     {
         [ResponseEnumValue("_")]
         [Description("Unsupported on this network or transaction type")]
-        UNsupported,
+        Unsupported,
 
         [ResponseEnumValue("M")]
         [Description("CVV2 Match")]

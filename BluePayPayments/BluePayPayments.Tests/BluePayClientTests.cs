@@ -18,7 +18,7 @@ namespace BluePayPayments.Tests
                 CVV = "123",
                 MonthExpiration = 12,
                 YearExpiration = DateTime.Now.AddYears(1).Year,
-                Amount = 100,
+                Amount = 101,
                 CustomerInfo = new CustomerInfo
                 {
                     FirstName = "Name",
@@ -26,11 +26,13 @@ namespace BluePayPayments.Tests
                 }
             };
 
+            request.Settings.OrderId = RandomString(200);
+
             request.Settings.AmountFood = 1;
 
             var response = await BluePayClient.AuthorizeAsync(request);
 
-            Assert.IsTrue(response.Status == Enums.StatusReponse.Approved);
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
         }
     }
 }

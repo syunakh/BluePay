@@ -1,38 +1,39 @@
-﻿using BluePayPayments.Enums;
+﻿using BluePayPayments.Attributes;
+using BluePayPayments.Enums;
 using Newtonsoft.Json;
 
 namespace BluePayPayments.Responses.Base
 {
     public class BaseResponse
     {
-        [JsonProperty("TRANS_TYPE")]
+        [ParamName("TRANS_TYPE")]
         public TransactionType TransactionType { get; set; }
 
-        [JsonProperty("REBID")]
+        [ParamName("REBID")]
         public string Rebid { get; set; }
 
-        [JsonProperty("CVV2")]
+        [ParamName("CVV2")]
         public CVVStatus Cvv { get; set; }
 
-        [JsonProperty("AUTH_CODE")]
+        [ParamName("AUTH_CODE")]
         public string AuthCode { get; set; }
 
-        [JsonProperty("PAYMENT_ACCOUNT_MASK")]
+        [ParamName("PAYMENT_ACCOUNT_MASK")]
         public string PaymentAccountMask { get; set; }
 
-        [JsonProperty("AVS")]
+        [ParamName("AVS")]
         public AVSStatus AVS { get; set; }
 
-        [JsonProperty("MESSAGE")]
+        [ParamName("MESSAGE")]
         public string Message { get; set; }
 
-        [JsonProperty("CARD_TYPE")]
+        [ParamName("CARD_TYPE")]
         public string CardType { get; set; }
 
-        [JsonProperty("TRANS_ID")]
+        [ParamName("TRANS_ID")]
         public string TransactionId { get; set; }
 
-        [JsonProperty("STATUS")]
-        public StatusReponse Status { get; set; }
+        [ParamName("STATUS")]
+        public StatusResponse Status { get; set; }
     }
 }
