@@ -10,7 +10,6 @@ namespace BluePayPayments.Requests
         public SaleRequest() : base(TransactionType.SALE)
         {
         }
-
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new NotImplementedException();
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BluePayPayments
 {
-    internal enum TransactionType
+    public enum TransactionType
     {
         AUTH,
         SALE,
@@ -10,5 +10,12 @@
         UPDATE,
         CREDIT,
         AGG
+    }
+
+    public enum PaymentType
+    {
+        CREDIT,
+        DEBIT,
+        ACH
     }
 }

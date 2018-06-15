@@ -4,7 +4,11 @@ namespace BluePayPayments.Requests.Base
 {
     public abstract class BaseRequest
     {
-        private TransactionType TransactionType { get; }
+        [ParamName("TRANS_TYPE")]
+        public TransactionType TransactionType { get; }
+
+        [ParamName("PAYMENT_TYPE")]
+        public PaymentType PaymentType { get; set; } = PaymentType.CREDIT;
 
         internal BaseRequest(TransactionType transactionType)
         {
@@ -13,6 +17,5 @@ namespace BluePayPayments.Requests.Base
 
         public AdditionalSettingsRequest Settings { get; } = new AdditionalSettingsRequest();
 
-        internal abstract Dictionary<string, string> ToDictionaryParameters();
     }
 }

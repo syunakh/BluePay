@@ -48,6 +48,9 @@ project.fragment.lock.json
 artifacts/
 **/Properties/launchSettings.json
 
+
+**/keys.json
+
 *_i.c
 *_p.c
 *_i.h
@@ -286,3 +289,4 @@ __pycache__/
 *.btm.cs 
 *.odx.cs
 *.xsd.cs
+BluePayPayments/BluePayPayments.Tests/keys.json

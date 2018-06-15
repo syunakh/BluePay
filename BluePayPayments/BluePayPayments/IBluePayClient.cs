@@ -1,18 +1,18 @@
 ﻿using BluePayPayments.Requests;
 using BluePayPayments.Requests.Base;
-
+using BluePayPayments.Responses.Base;
 using System.Threading.Tasks;
 
 namespace BluePayPayments
 {
     public interface IBluePayClient
     {
-        Task AuthorizeAsync(AuthorizeRequest request);
-        Task CaptureAsync(CaptureRequest request);
-        Task SaleAsync(SaleRequest request);
-        Task RefundAsync(RefundRequest request);
-        Task VoidAsync(VoidRequest request);
-        Task UpdateAsync(UpdateRequest request);
-        Task CreditAsync(CreditRequest request);
+        Task<BaseResponse> AuthorizeAsync(AuthorizeRequest request);
+        Task<BaseResponse> CaptureAsync(CaptureRequest request);
+        Task<BaseResponse> SaleAsync(SaleRequest request);
+        Task<BaseResponse> RefundAsync(RefundRequest request);
+        Task<BaseResponse> VoidAsync(VoidRequest request);
+        Task<BaseResponse> UpdateAsync(UpdateRequest request);
+        Task<BaseResponse> CreditAsync(CreditRequest request);
     }
 }

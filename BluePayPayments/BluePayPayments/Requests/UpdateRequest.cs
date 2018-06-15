@@ -10,7 +10,6 @@ namespace BluePayPayments.Requests
         public UpdateRequest() : base(TransactionType.UPDATE)
         {
         }
-
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new NotImplementedException();
+        
     }
 }

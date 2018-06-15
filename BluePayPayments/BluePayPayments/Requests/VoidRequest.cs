@@ -10,7 +10,6 @@ namespace BluePayPayments.Requests
         public VoidRequest() : base(TransactionType.VOID)
         {
         }
-
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new NotImplementedException();
+        
     }
 }

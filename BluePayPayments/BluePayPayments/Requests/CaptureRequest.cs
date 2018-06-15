@@ -10,7 +10,6 @@ namespace BluePayPayments.Requests
         public CaptureRequest() : base(TransactionType.CAPTURE)
         {
         }
-
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new NotImplementedException();
+        
     }
 }

@@ -10,7 +10,6 @@ namespace BluePayPayments.Requests
         public RefundRequest() : base(TransactionType.REFUND)
         {
         }
-
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new NotImplementedException();
+        
     }
 }

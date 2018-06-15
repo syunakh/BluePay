@@ -10,7 +10,6 @@ namespace BluePayPayments.Requests
         public CreditRequest() : base(TransactionType.CREDIT)
         {
         }
-
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new NotImplementedException();
+        
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BluePayPayments.Requests.Base
 {
-    public class AdditionalSettingsRequest
+    public class AdditionalSettingsRequest : IPropertyContainer
     {
         /// <summary>
         /// Gets or sets a value indicating whether [duplicate override].
@@ -83,7 +83,7 @@ namespace BluePayPayments.Requests.Base
         /// Note: Rebilling is only available to US merchants.
         /// </summary>
         [ParamName("DO_REBILL")]
-        public bool DoRebill { get; set; }
+        public bool? DoRebill { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [reb is credit].
@@ -91,7 +91,7 @@ namespace BluePayPayments.Requests.Base
         /// Note: Rebilling is only available to US merchants.
         /// </summary>
         [ParamName("REB_IS_CREDIT")]
-        public bool RebIsCredit { get; set; }
+        public bool? RebIsCredit { get; set; }
 
         /// <summary>
         /// Gets or sets the reb first date.

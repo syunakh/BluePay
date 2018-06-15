@@ -1,6 +1,6 @@
 ﻿namespace BluePayPayments.Requests.Base
 {
-    public abstract class CustomerInfo
+    public class CustomerInfo : IPropertyContainer
     {
         [ParamName("NAME1")]
         public string FirstName { get; set; }

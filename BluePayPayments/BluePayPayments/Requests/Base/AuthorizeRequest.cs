@@ -13,6 +13,8 @@ namespace BluePayPayments.Requests.Base
         [ParamName("AMOUNT")]
         public decimal Amount { get; set; }
 
-        internal override Dictionary<string, string> ToDictionaryParameters() => throw new System.NotImplementedException();
+        public abstract string PaymentAccount { get; }
+
+
     }
 }
