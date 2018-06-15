@@ -12,7 +12,7 @@ namespace BluePayPayments.Responses.Base
         public string Rebid { get; set; }
 
         [JsonProperty("CVV2")]
-        public string Cvv { get; set; }
+        public CVVStatus Cvv { get; set; }
 
         [JsonProperty("AUTH_CODE")]
         public string AuthCode { get; set; }
@@ -21,7 +21,7 @@ namespace BluePayPayments.Responses.Base
         public string PaymentAccountMask { get; set; }
 
         [JsonProperty("AVS")]
-        public string AVS { get; set; }
+        public AVSStatus AVS { get; set; }
 
         [JsonProperty("MESSAGE")]
         public string Message { get; set; }
