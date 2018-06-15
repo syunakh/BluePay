@@ -41,25 +41,46 @@ namespace BluePayPayments
 
         public async Task<BaseResponse> AuthorizeAsync(AuthorizeRequest request)
         {
-            var prms = request.ToDictionaryParams();
-            prms.Add("MODE", Mode);
-            prms.Add("TAMPER_PROOF_SEAL", CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType));
-            prms.Add("ACCOUNT_ID", _apiAccountId);
+            var calcMD5 = CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType);
+            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
 
             var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
 
-            if (!response.IsSuccessStatusCode)
-            {
-
-            }
+            response.EnsureSuccessStatusCode();
 
             var result = await response.Content.ReadAsStringAsync();
 
             return result.ToBaseResponse();
         }
 
-        public async Task<BaseResponse> CaptureAsync(CaptureRequest request) => throw new NotImplementedException();
-        public async Task<BaseResponse> SaleAsync(SaleRequest request) => throw new NotImplementedException();
+        public async Task<BaseResponse> SaleAsync(SaleRequest request)
+        {
+            var calcMD5 = CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType);
+            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
+
+            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
+
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            return result.ToBaseResponse();
+        }
+
+        public async Task<BaseResponse> CaptureAsync(CaptureRequest request)
+        {
+            var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
+            var prms = request.ToDictionaryParams(Mode,calcMD5,_apiAccountId);
+
+            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
+
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            return result.ToBaseResponse();
+        }
+
         public async Task<BaseResponse> RefundAsync(RefundRequest request) => throw new NotImplementedException();
         public async Task<BaseResponse> VoidAsync(VoidRequest request) => throw new NotImplementedException();
         public async Task<BaseResponse> UpdateAsync(UpdateRequest request) => throw new NotImplementedException();

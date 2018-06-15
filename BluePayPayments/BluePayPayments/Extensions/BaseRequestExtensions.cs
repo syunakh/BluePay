@@ -8,7 +8,7 @@ namespace BluePayPayments.Extensions
 {
     internal static class BaseRequestExtensions
     {
-        public static Dictionary<string, string> ToDictionaryParams(this BaseRequest baseRequest)
+        public static Dictionary<string, string> ToDictionaryParams(this BaseRequest baseRequest, string mode, string calcMD5, string accountId)
         {
             var result = new Dictionary<string, string>();
 
@@ -16,6 +16,10 @@ namespace BluePayPayments.Extensions
             {
                 ConvertParams(baseRequest, result);
             }
+
+            result.Add("MODE", mode);
+            result.Add("TAMPER_PROOF_SEAL", calcMD5);
+            result.Add("ACCOUNT_ID", accountId);
 
             return result;
         }

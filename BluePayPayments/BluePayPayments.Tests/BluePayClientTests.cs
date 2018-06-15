@@ -22,7 +22,7 @@ namespace BluePayPayments.Tests
                 CustomerInfo = new CustomerInfo
                 {
                     FirstName = "Name",
-                    LastName = "LasName"
+                    LastName = "LastName"
                 }
             };
 
@@ -31,6 +31,66 @@ namespace BluePayPayments.Tests
             request.Settings.AmountFood = 1;
 
             var response = await BluePayClient.AuthorizeAsync(request);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+        }
+
+        [TestMethod]
+        public async Task CaptureTest()
+        {
+            var request = new AuthorizeCreditCardRequest
+            {
+                CardNumber = "4111111111111111",
+                CVV = "123",
+                MonthExpiration = 12,
+                YearExpiration = DateTime.Now.AddYears(1).Year,
+                Amount = 101,
+                CustomerInfo = new CustomerInfo
+                {
+                    FirstName = "Name",
+                    LastName = "LastName"
+                }
+            };
+
+            request.Settings.OrderId = RandomString(200);
+
+            request.Settings.AmountFood = 1;
+
+            var response = await BluePayClient.AuthorizeAsync(request);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+
+            var captureResponse = await BluePayClient.CaptureAsync(new CaptureRequest
+            {
+                Amount = request.Amount,
+                TransactionId = response.TransactionId
+            });
+
+            Assert.Equals(Enums.StatusResponse.Approved, captureResponse.Status);
+        }
+
+        [TestMethod]
+        public async Task SaleTest()
+        {
+            var request = new SaleCreditCardRequest
+            {
+                CardNumber = "4111111111111111",
+                CVV = "123",
+                MonthExpiration = 12,
+                YearExpiration = DateTime.Now.AddYears(1).Year,
+                Amount = 101,
+                CustomerInfo = new CustomerInfo
+                {
+                    FirstName = "Name",
+                    LastName = "LastName"
+                }
+            };
+
+            request.Settings.OrderId = RandomString(200);
+
+            request.Settings.AmountFood = 1;
+
+            var response = await BluePayClient.SaleAsync(request);
 
             Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
         }
