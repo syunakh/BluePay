@@ -42,43 +42,19 @@ namespace BluePayPayments
         public async Task<BaseResponse> AuthorizeAsync(AuthorizeRequest request)
         {
             var calcMD5 = CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType);
-            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
-
-            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
-
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadAsStringAsync();
-
-            return result.ToBaseResponse();
+            return await SendAsync(request, calcMD5);
         }
 
         public async Task<BaseResponse> SaleAsync(SaleRequest request)
         {
             var calcMD5 = CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType);
-            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
-
-            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
-
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadAsStringAsync();
-
-            return result.ToBaseResponse();
+            return await SendAsync(request, calcMD5);
         }
 
         public async Task<BaseResponse> CaptureAsync(CaptureRequest request)
         {
             var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
-            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
-
-            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
-
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadAsStringAsync();
-
-            return result.ToBaseResponse();
+            return await SendAsync(request, calcMD5);
         }
 
         public async Task<BaseResponse> RefundAsync(RefundRequest request) => throw new NotImplementedException();
@@ -99,6 +75,19 @@ namespace BluePayPayments
 
                 return _httpClient;
             }
+        }
+
+        private async Task<BaseResponse> SendAsync(BaseRequest request, string calcMD5)
+        {
+            var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
+
+            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
+
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            return result.ToBaseResponse();
         }
 
         private string CalcTpsMd5(decimal? amount, string name, string paymentAccount, TransactionType transactionType, string transactionId = null)
