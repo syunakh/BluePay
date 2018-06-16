@@ -6,7 +6,7 @@ BluePay .Net Gateway interface
 
 Used https://www.bluepay.com/sites/default/files/documentation/BluePay_bp20post/Bluepay20post.txt
 
-## Install
+## Nuget
 
 ```
 Install-Package BluePayPayments
