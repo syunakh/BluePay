@@ -1,6 +1,9 @@
 ﻿using BluePayPayments.Requests;
 using BluePayPayments.Requests.Base;
+using BluePayPayments.Responses.Base;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using System;
 using System.Threading.Tasks;
 
@@ -12,25 +15,8 @@ namespace BluePayPayments.Tests
         [TestMethod]
         public async Task AuthorizeTest()
         {
-            var request = new AuthorizeCreditCardRequest
-            {
-                CardNumber = "4111111111111111",
-                CVV = "123",
-                MonthExpiration = 12,
-                YearExpiration = DateTime.Now.AddYears(1).Year,
-                Amount = 101,
-                CustomerInfo = new CustomerInfo
-                {
-                    FirstName = "Name",
-                    LastName = "LastName"
-                }
-            };
-
-            request.Settings.OrderId = RandomString(200);
-
-            request.Settings.AmountFood = 1;
-
-            var response = await BluePayClient.AuthorizeAsync(request);
+            const decimal amount = 101;
+            var response = await AuthorizeAsync(amount);
 
             Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
         }
@@ -38,31 +24,14 @@ namespace BluePayPayments.Tests
         [TestMethod]
         public async Task CaptureTest()
         {
-            var request = new AuthorizeCreditCardRequest
-            {
-                CardNumber = "4111111111111111",
-                CVV = "123",
-                MonthExpiration = 12,
-                YearExpiration = DateTime.Now.AddYears(1).Year,
-                Amount = 101,
-                CustomerInfo = new CustomerInfo
-                {
-                    FirstName = "Name",
-                    LastName = "LastName"
-                }
-            };
-
-            request.Settings.OrderId = RandomString(200);
-
-            request.Settings.AmountFood = 1;
-
-            var response = await BluePayClient.AuthorizeAsync(request);
+            const decimal amount = 101;
+            var response = await AuthorizeAsync(amount);
 
             Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
 
             var captureResponse = await BluePayClient.CaptureAsync(new CaptureRequest
             {
-                Amount = request.Amount,
+                Amount = amount,
                 TransactionId = response.TransactionId
             });
 
@@ -71,6 +40,87 @@ namespace BluePayPayments.Tests
 
         [TestMethod]
         public async Task SaleTest()
+        {
+            const decimal amount = 101;
+            var response =await SaleAsync(amount);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+        }
+
+        [TestMethod]
+        public async Task RefundTest()
+        {
+            const decimal amount = 101;
+            var response = await SaleAsync(amount);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+
+            var refundReponse = await BluePayClient.RefundAsync(new RefundRequest
+            {
+                Amount = amount - 50,
+                TransactionId = response.TransactionId
+            });
+
+            Assert.IsTrue(refundReponse.Status == Enums.StatusResponse.Approved);
+        }
+
+        [TestMethod]
+        public async Task VoidTest()
+        {
+            const decimal amount = 101;
+            var response = await AuthorizeAsync(amount);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+
+            var voidResponse = await BluePayClient.VoidAsync(new VoidRequest
+            {
+                TransactionId = response.TransactionId
+            });
+
+            Assert.IsTrue(voidResponse.Status == Enums.StatusResponse.Approved);
+        }
+
+        [TestMethod]
+        public async Task UpdateTest()
+        {
+            const decimal amount = 101;
+            var response = await SaleAsync(amount);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+
+            var updateReponse = await BluePayClient.UpdateAsync(new UpdateRequest
+            {
+                Amount = amount + 50,
+                TransactionId = response.TransactionId
+            });
+
+            Assert.IsTrue(updateReponse.Status == Enums.StatusResponse.Approved);
+        }
+
+        private Task<BaseResponse> AuthorizeAsync(decimal amount)
+        {
+            var request = new AuthorizeCreditCardRequest
+            {
+                CardNumber = "4111111111111111",
+                CVV = "123",
+                MonthExpiration = 12,
+                YearExpiration = DateTime.Now.AddYears(1).Year,
+                Amount = amount,
+                CustomerInfo = new CustomerInfo
+                {
+                    FirstName = "Name",
+                    LastName = "LastName"
+                }
+            };
+
+            request.Settings.OrderId = RandomString(200);
+
+            request.Settings.AmountFood = 1;
+
+            return BluePayClient.AuthorizeAsync(request);
+        }
+
+        private Task<BaseResponse> SaleAsync(decimal amount)
         {
             var request = new SaleCreditCardRequest
             {
@@ -90,9 +140,7 @@ namespace BluePayPayments.Tests
 
             request.Settings.AmountFood = 1;
 
-            var response = await BluePayClient.SaleAsync(request);
-
-            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+            return BluePayClient.SaleAsync(request);
         }
     }
 }

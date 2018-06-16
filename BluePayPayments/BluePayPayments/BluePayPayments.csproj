@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Siarhei Yunakh</Authors>
+    <Company>Siarhei Yunakh</Company>
+    <PackageId>BluePayPayments</PackageId>
+    <Description>A .net payment processor interface to BluePay Gateway</Description>
+    <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
+    <Version>1.0.0.1</Version>
+    <PackageTags>BluePay, Payments</PackageTags>
+    <RepositoryType>Git</RepositoryType>
+    <PackageProjectUrl>https://github.com/syunakh/BluePay</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

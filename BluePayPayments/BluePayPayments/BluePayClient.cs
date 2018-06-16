@@ -1,14 +1,14 @@
-﻿using System;
+﻿using BluePayPayments.Extensions;
+using BluePayPayments.Http;
+using BluePayPayments.Requests;
+using BluePayPayments.Requests.Base;
+using BluePayPayments.Responses.Base;
+
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using BluePayPayments.Extensions;
-using BluePayPayments.Http;
-using BluePayPayments.Requests;
-using BluePayPayments.Requests.Base;
-using BluePayPayments.Responses.Base;
 
 namespace BluePayPayments
 {
@@ -57,11 +57,24 @@ namespace BluePayPayments
             return await SendAsync(request, calcMD5);
         }
 
-        public async Task<BaseResponse> RefundAsync(RefundRequest request) => throw new NotImplementedException();
-        public async Task<BaseResponse> VoidAsync(VoidRequest request) => throw new NotImplementedException();
-        public async Task<BaseResponse> UpdateAsync(UpdateRequest request) => throw new NotImplementedException();
-        public async Task<BaseResponse> CreditAsync(CreditRequest request) => throw new NotImplementedException();
+        public async Task<BaseResponse> RefundAsync(RefundRequest request)
+        {
+            var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
+            return await SendAsync(request, calcMD5);
+        }
 
+        public async Task<BaseResponse> VoidAsync(VoidRequest request)
+        {
+            var calcMD5 = CalcTpsMd5(null, null, null, request.TransactionType, request.TransactionId);
+            return await SendAsync(request, calcMD5);
+        }
+
+        public async Task<BaseResponse> UpdateAsync(UpdateRequest request)
+        {
+            var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
+            return await SendAsync(request, calcMD5);
+        }
+        
         #region Private
 
         private HttpClient BPHttpClient
@@ -77,20 +90,20 @@ namespace BluePayPayments
             }
         }
 
-        private async Task<BaseResponse> SendAsync(BaseRequest request, string calcMD5)
+        protected async Task<BaseResponse> SendAsync(BaseRequest request, string calcMD5)
         {
             var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
 
             var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
 
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
 
             var result = await response.Content.ReadAsStringAsync();
 
             return result.ToBaseResponse();
         }
 
-        private string CalcTpsMd5(decimal? amount, string name, string paymentAccount, TransactionType transactionType, string transactionId = null)
+        protected string CalcTpsMd5(decimal? amount, string name, string paymentAccount, TransactionType transactionType, string transactionId = null)
         {
             var nameOfTransactionType = transactionType.GetEnumName();
             //SECRET KEY + ACCOUNT_ID + TRANS_TYPE + AMOUNT + MASTER_ID + NAME1 + PAYMENT_ACCOUNT
