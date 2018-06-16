@@ -31,8 +31,8 @@ var request = new AuthorizeCreditCardRequest
 	}
 };
 
-request.Settings.OrderId = "1";
-request.Settings.AmountFood = 1;
+request.AdditionalInformation.OrderId = "1";
+request.AdditionalInformation.AmountFood = 1;
 
 var response = await bluePayClient.AuthorizeAsync(request);
 ```

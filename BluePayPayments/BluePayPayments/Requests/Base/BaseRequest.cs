@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BluePayPayments.Attributes;
+﻿using BluePayPayments.Attributes;
 
 namespace BluePayPayments.Requests.Base
 {
@@ -16,7 +15,7 @@ namespace BluePayPayments.Requests.Base
             TransactionType = transactionType;
         }
 
-        public AdditionalSettingsRequest Settings { get; } = new AdditionalSettingsRequest();
+        public AdditionalSettingsRequest AdditionalInformation { get; } = new AdditionalSettingsRequest();
 
     }
 }

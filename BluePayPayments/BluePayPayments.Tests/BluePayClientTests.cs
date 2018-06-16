@@ -113,9 +113,9 @@ namespace BluePayPayments.Tests
                 }
             };
 
-            request.Settings.OrderId = RandomString(200);
+            request.AdditionalInformation.OrderId = RandomString(200);
 
-            request.Settings.AmountFood = 1;
+            request.AdditionalInformation.AmountFood = 1;
 
             return BluePayClient.AuthorizeAsync(request);
         }
@@ -136,9 +136,9 @@ namespace BluePayPayments.Tests
                 }
             };
 
-            request.Settings.OrderId = RandomString(200);
+            request.AdditionalInformation.OrderId = RandomString(200);
 
-            request.Settings.AmountFood = 1;
+            request.AdditionalInformation.AmountFood = 1;
 
             return BluePayClient.SaleAsync(request);
         }
