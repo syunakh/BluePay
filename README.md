@@ -1,10 +1,18 @@
-# Install
+#BluePayPayments
+
+## Description
+
+BluePay .Net Gateway interface
+
+Used https://www.bluepay.com/sites/default/files/documentation/BluePay_bp20post/Bluepay20post.txt
+
+## Install
 
 ```
 Install-Package BluePayPayments
 ```
 
-# Example
+## Example
 
 ```
 var bluePayClient = new BluePayClient(keys.AccountId, keys.SecretKey, !keys.Sandbox);
@@ -27,4 +35,21 @@ request.Settings.OrderId = "1";
 request.Settings.AmountFood = 1;
 
 var response = await bluePayClient.AuthorizeAsync(request);
+```
+
+## Extensibility
+
+Request classes can be extended if you need a parameter that is not implemented in the default request.
+
+For Example,
+if you want to add **BIRTHDATE** to you Authorize request.
+
+You should add this field by inherited of base class
+
+```
+public class AuthorizeRequestWithBirthDate : AuthorizeCreditCardRequest
+{
+	[ParamName("BIRTHDATE")]
+    public string BirthDate { get; set; }
+}
 ```

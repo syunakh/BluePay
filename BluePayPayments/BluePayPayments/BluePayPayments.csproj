@@ -5,7 +5,7 @@
     <Authors>Siarhei Yunakh</Authors>
     <Company>Siarhei Yunakh</Company>
     <PackageId>BluePayPayments</PackageId>
-    <Description>A .net payment processor interface to BluePay Gateway</Description>
+    <Description>BluePay .Net Gateway interface</Description>
     <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
     <Version>1.0.0.2</Version>
     <PackageTags>BluePay, Payments, Creditcard, Merchant</PackageTags>

@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
 
 namespace BluePayPayments.Tests
 {
