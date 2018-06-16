@@ -19,16 +19,16 @@ var bluePayClient = new BluePayClient(keys.AccountId, keys.SecretKey, !keys.Sand
 
 var request = new AuthorizeCreditCardRequest
 {
-  CardNumber = "4111111111111111",
-  CVV = "123",
-  MonthExpiration = 12,
-  YearExpiration = DateTime.Now.AddYears(1).Year,
-  Amount = amount,
-  CustomerInfo = new CustomerInfo
-  {
-    FirstName = "Name",
-    LastName = "LastName"
-  }
+	CardNumber = "4111111111111111",
+	CVV = "123",
+	MonthExpiration = 12,
+	YearExpiration = DateTime.Now.AddYears(1).Year,
+	Amount = amount,
+	CustomerInfo = new CustomerInfo
+	{
+		FirstName = "Name",
+		LastName = "LastName"
+	}
 };
 
 request.Settings.OrderId = "1";
@@ -50,6 +50,8 @@ You should add this field by inherited of base class
 public class AuthorizeRequestWithBirthDate : AuthorizeCreditCardRequest
 {
 	[ParamName("BIRTHDATE")]
-    public string BirthDate { get; set; }
+	public string BirthDate { get; set; }
 }
 ```
+
+and use it for request
