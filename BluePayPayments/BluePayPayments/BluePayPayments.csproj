@@ -7,10 +7,11 @@
     <PackageId>BluePayPayments</PackageId>
     <Description>A .net payment processor interface to BluePay Gateway</Description>
     <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
-    <Version>1.0.0.1</Version>
-    <PackageTags>BluePay, Payments</PackageTags>
+    <Version>1.0.0.2</Version>
+    <PackageTags>BluePay, Payments, Creditcard, Merchant</PackageTags>
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/syunakh/BluePay</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/syunakh/BluePay/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>

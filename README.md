@@ -26,5 +26,5 @@ var request = new AuthorizeCreditCardRequest
 request.Settings.OrderId = "1";
 request.Settings.AmountFood = 1;
 
-var response = bluePayClient.AuthorizeAsync(request);
+var response = await bluePayClient.AuthorizeAsync(request);
 ```
