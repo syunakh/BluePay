@@ -25,7 +25,7 @@ namespace BluePayPayments.Extensions
             return result;
         }
 
-        private static void ConvertParams(object obj, Dictionary<string, string> result)
+        private static void ConvertParams(object obj, Dictionary<string, string> result, int? index = null)
         {
             foreach (var prop in obj.GetType().GetProperties())
             {
@@ -37,11 +37,26 @@ namespace BluePayPayments.Extensions
                 {
                     ConvertParams(val, result);
                 }
+                else if (typeof(ICollection<Lvl3Information>).IsAssignableFrom(type))
+                {
+                    var indexItem = 1;
+                    foreach (var item in (ICollection<Lvl3Information>)val)
+                    {
+                        ConvertParams(item, result, indexItem);
+                        indexItem++;
+                    }
+                }
                 else
                 {
                     if (prop.GetCustomAttributes(true).ToList().Find(f => f is ParamNameAttribute) is ParamNameAttribute propNameAttr)
                     {
                         var key = propNameAttr.Name.ToUpper();
+
+                        if (index.HasValue)
+                        {
+                            key = key?.Replace("{INDEX}", index.ToString());
+                        }
+
                         string valString;
 
                         if (type.IsEnum)
@@ -52,7 +67,7 @@ namespace BluePayPayments.Extensions
                             {
                                 var name = enumValue.ToString();
 
-                                if(valString != name) continue;
+                                if (valString != name) continue;
 
                                 var memInfo = type.GetMember(name);
                                 if (memInfo.Length <= 0) continue;
@@ -63,7 +78,11 @@ namespace BluePayPayments.Extensions
                                     break;
                                 }
                             }
-                            
+
+                        }
+                        else if (typeof(Decimal?).IsAssignableFrom(type))
+                        {
+                            valString = ((decimal?)val)?.ToString("0.00");
                         }
                         else if (typeof(Decimal).IsAssignableFrom(type))
                         {

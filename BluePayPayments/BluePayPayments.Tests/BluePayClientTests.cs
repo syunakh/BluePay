@@ -42,7 +42,7 @@ namespace BluePayPayments.Tests
         public async Task SaleTest()
         {
             const decimal amount = 101;
-            var response =await SaleAsync(amount);
+            var response = await SaleAsync(amount);
 
             Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
         }
@@ -102,6 +102,40 @@ namespace BluePayPayments.Tests
         {
             const decimal amount = 101;
             var response = await SaleAsync(amount, Enums.Version.Version3);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+        }
+
+        [TestMethod]
+        public async Task SaleWithLevel3ItemsTest()
+        {
+            var request = new SaleCreditCardRequest
+            {
+                CardNumber = "4111111111111111",
+                CVV = "123",
+                MonthExpiration = 12,
+                YearExpiration = DateTime.Now.AddYears(1).Year,
+                Amount = 101,
+                CustomerInfo = new CustomerInfo
+                {
+                    FirstName = "Name",
+                    LastName = "LastName"
+                }
+            };
+
+            request.AdditionalInformation.OrderId = RandomString(200);
+            request.AdditionalInformation.AmountFood = 1;
+
+            request.AdditionalInformation.Lvl3Information.Add(new Lvl3Information
+            {
+                CityTaxAmount = 1
+            });
+            request.AdditionalInformation.Lvl3Information.Add(new Lvl3Information
+            {
+                CityTaxAmount = 2
+            });
+
+            var response = await BluePayClient.SaleAsync(request);
 
             Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
         }

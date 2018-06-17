@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BluePayPayments.Attributes;
 
 namespace BluePayPayments.Requests.Base
@@ -169,5 +170,15 @@ namespace BluePayPayments.Requests.Base
         /// </summary>
         [ParamName("TRACK2")]
         public string Track2 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LVL2 information.
+        /// </summary>
+        public Lvl2Information Lvl2Information { get; set; } = new Lvl2Information();
+
+        /// <summary>
+        /// Gets the LVL3 information.
+        /// </summary>
+        public ICollection<Lvl3Information> Lvl3Information { get; set; } = new List<Lvl3Information>();
     }
 }
