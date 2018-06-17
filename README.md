@@ -12,6 +12,8 @@ Used https://www.bluepay.com/sites/default/files/documentation/BluePay_bp20post/
 Install-Package BluePayPayments
 ```
 
+https://www.nuget.org/packages/BluePayPayments/
+
 ## Example
 
 ```
