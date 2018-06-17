@@ -46,6 +46,7 @@ If you need a parameter that is not implemented in the default request the Reque
 For example,
 
 You need to add **BIRTHDATE** to your Authorize request
+
 You should create your class inheriting the base class and add needed parameters
 
 ```
