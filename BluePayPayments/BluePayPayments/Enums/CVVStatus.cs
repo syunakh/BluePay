@@ -6,35 +6,35 @@ namespace BluePayPayments.Enums
 {
     public enum CVVStatus
     {
-        [ResponseEnumValue("_")]
+        [EnumValueAttribute("_")]
         [Description("Unsupported on this network or transaction type")]
         Unsupported,
 
-        [ResponseEnumValue("M")]
+        [EnumValueAttribute("M")]
         [Description("CVV2 Match")]
         CVV2Match,
 
-        [ResponseEnumValue("N")]
+        [EnumValueAttribute("N")]
         [Description("CVV2 did not match")]
         CVV2DidNotMatch,
 
-        [ResponseEnumValue("P")]
+        [EnumValueAttribute("P")]
         [Description("CVV2 was not processed")]
         CVV2WasNotProcessed,
 
-        [ResponseEnumValue("S")]
+        [EnumValueAttribute("S")]
         [Description("CVV2 exists but was not input")]
         CVV2ExistsButWasNotInput,
 
-        [ResponseEnumValue("U")]
+        [EnumValueAttribute("U")]
         [Description("Card issuer does not provide CVV2 service")]
         CardIssuerDoesNotProvideCVV2Service,
 
-        [ResponseEnumValue("X")]
+        [EnumValueAttribute("X")]
         [Description("No response from association")]
         NoResponseFromAssociation,
 
-        [ResponseEnumValue("Y")]
+        [EnumValueAttribute("Y")]
         [Description("CVV2 Match (Amex only when processed through BluePay Canada)")]
         CVV2MatchAmexOnlyWhenProcessedThroughBluePayCanada
     }

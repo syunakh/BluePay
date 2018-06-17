@@ -97,6 +97,15 @@ namespace BluePayPayments.Tests
             Assert.IsTrue(updateReponse.Status == Enums.StatusResponse.Approved);
         }
 
+        [TestMethod]
+        public async Task SaleVersion1Test()
+        {
+            const decimal amount = 101;
+            var response = await SaleAsync(amount, Enums.Version.Version3);
+
+            Assert.IsTrue(response.Status == Enums.StatusResponse.Approved);
+        }
+
         private Task<BaseResponse> AuthorizeAsync(decimal amount)
         {
             var request = new AuthorizeCreditCardRequest
@@ -120,7 +129,7 @@ namespace BluePayPayments.Tests
             return BluePayClient.AuthorizeAsync(request);
         }
 
-        private Task<BaseResponse> SaleAsync(decimal amount)
+        private Task<BaseResponse> SaleAsync(decimal amount, Enums.Version version = Enums.Version.Version1)
         {
             var request = new SaleCreditCardRequest
             {
@@ -128,12 +137,13 @@ namespace BluePayPayments.Tests
                 CVV = "123",
                 MonthExpiration = 12,
                 YearExpiration = DateTime.Now.AddYears(1).Year,
-                Amount = 101,
+                Amount = amount,
                 CustomerInfo = new CustomerInfo
                 {
                     FirstName = "Name",
                     LastName = "LastName"
-                }
+                },
+                Version = version
             };
 
             request.AdditionalInformation.OrderId = RandomString(200);

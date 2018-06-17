@@ -39,8 +39,7 @@ namespace BluePayPayments.Extensions
                 }
                 else
                 {
-                    var propNameAttr = prop.GetCustomAttributes(true).ToList().Find(f => f is ParamNameAttribute) as ParamNameAttribute;
-                    if (propNameAttr != null)
+                    if (prop.GetCustomAttributes(true).ToList().Find(f => f is ParamNameAttribute) is ParamNameAttribute propNameAttr)
                     {
                         var key = propNameAttr.Name.ToUpper();
                         string valString;
@@ -48,6 +47,23 @@ namespace BluePayPayments.Extensions
                         if (type.IsEnum)
                         {
                             valString = Enum.GetName(type, val);
+
+                            foreach (var enumValue in Enum.GetValues(type))
+                            {
+                                var name = enumValue.ToString();
+
+                                if(valString != name) continue;
+
+                                var memInfo = type.GetMember(name);
+                                if (memInfo.Length <= 0) continue;
+
+                                if (memInfo[0].GetCustomAttributes(typeof(EnumValueAttribute), false).FirstOrDefault() is EnumValueAttribute attr)
+                                {
+                                    valString = attr.Value;
+                                    break;
+                                }
+                            }
+                            
                         }
                         else if (typeof(Decimal).IsAssignableFrom(type))
                         {

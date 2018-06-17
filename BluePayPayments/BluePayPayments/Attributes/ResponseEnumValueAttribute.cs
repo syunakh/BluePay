@@ -1,11 +1,11 @@
 ﻿using System;
 namespace BluePayPayments.Attributes
 {
-    public class ResponseEnumValueAttribute : Attribute
+    public class EnumValueAttribute : Attribute
     {
         public string Value { get; }
 
-        public ResponseEnumValueAttribute(string value)
+        public EnumValueAttribute(string value)
         {
             Value = value;
         }

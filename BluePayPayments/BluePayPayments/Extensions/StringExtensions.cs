@@ -8,9 +8,9 @@ namespace BluePayPayments.Extensions
 {
     internal static class StringExtensions
     {
-        internal static BaseResponse ToBaseResponse(this string response)
+        internal static T ToBaseResponse<T>(this string response) where T: BaseResponse, new()
         {
-            var result = new BaseResponse();
+            var result = new T();
 
             var parsedQuery = HttpUtility.ParseQueryString($"?{response}");
 
@@ -33,11 +33,11 @@ namespace BluePayPayments.Extensions
                         {
                             var memInfo = propType.GetMember(enumValue.ToString());
                             if (memInfo.Length <= 0) continue;
-                            var attr = memInfo[0].GetCustomAttributes(typeof(ResponseEnumValueAttribute), false).FirstOrDefault() as ResponseEnumValueAttribute;
+                            var attr = memInfo[0].GetCustomAttributes(typeof(EnumValueAttribute), false).FirstOrDefault() as EnumValueAttribute;
 
-                            if (attr != null 
-                                    && attr.Value?.ToLower() == value.ToLower() 
-                                || enumValue.ToString().ToLower() == value.ToLower())
+                            if ((attr != null
+                                    && attr.Value?.ToLower() == value.ToLower())
+                                || string.Equals(enumValue.ToString(), value, StringComparison.OrdinalIgnoreCase))
                             {
                                 prop.SetValue(result, Enum.Parse(propType, enumValue.ToString()));
                                 break;

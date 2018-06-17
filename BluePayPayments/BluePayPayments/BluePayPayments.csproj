@@ -7,7 +7,7 @@
     <PackageId>BluePayPayments</PackageId>
     <Description>BluePay .Net Gateway interface</Description>
     <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
-    <Version>1.0.0.2</Version>
+    <Version>1.1.0</Version>
     <PackageTags>BluePay, Payments, Creditcard, Merchant</PackageTags>
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/syunakh/BluePay</PackageProjectUrl>

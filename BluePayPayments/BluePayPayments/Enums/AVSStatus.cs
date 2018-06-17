@@ -6,114 +6,114 @@ namespace BluePayPayments.Enums
 {
     public enum AVSStatus
     {
-        [ResponseEnumValue("_")]
+        [EnumValueAttribute("_")]
         Empty,
 
-        [ResponseEnumValue("A")]
+        [EnumValueAttribute("A")]
         [Description("Partial match - Street Address matches, ZIP Code does not")]
         PartialMatchStreetAddressMatchZIPCodedoesnt,
 
-        [ResponseEnumValue("B")]
+        [EnumValueAttribute("B")]
         [Description("International street address match, postal code not verified due to incompatible formats")]
         InternationalStreetAddressMatchPostalCodeNotVerified,
 
-        [ResponseEnumValue("C")]
+        [EnumValueAttribute("C")]
         [Description("International street address and postal code not verified due to incompatible formats")]
         InternationalStreetAddressAndPostalCodeNotVerified,
 
-        [ResponseEnumValue("D")]
+        [EnumValueAttribute("D")]
         [Description("International street address and postal code match")]
         InternationalStreetAddressAndPostalCodeMatch,
 
-        [ResponseEnumValue("E")]
+        [EnumValueAttribute("E")]
         [Description("Not a mail or phone order")]
         NotAMailOrPhoneOrder,
 
-        [ResponseEnumValue("F")]
+        [EnumValueAttribute("F")]
         [Description("Address and Postal Code match (UK only)")]
         AddressAndPostalCodeMatchUKOnly,
 
-        [ResponseEnumValue("G")]
+        [EnumValueAttribute("G")]
         [Description("Service Not supported, non-US Issuer does not participate")]
         ServiceNotSupportedNonUSIssuer,
 
-        [ResponseEnumValue("I")]
+        [EnumValueAttribute("I")]
         [Description("Address information not verified for international transaction")]
         AddressInformationNotVerifiedForInternationalTransaction,
 
-        [ResponseEnumValue("M")]
+        [EnumValueAttribute("M")]
         [Description("Address and Postal Code match")]
         AddressAndPostalCodeMatch,
 
-        [ResponseEnumValue("N")]
+        [EnumValueAttribute("N")]
         [Description("No match - No Address or ZIP Code match")]
         NoMatchNoAddressOrZIPCodeMatch,
 
-        [ResponseEnumValue("P")]
+        [EnumValueAttribute("P")]
         [Description("International postal code match, street address not verified due to incompatible format")]
         InternationalPostalCodeMatchStreetAddressNotVerified,
 
-        [ResponseEnumValue("Q")]
+        [EnumValueAttribute("Q")]
         [Description("Bill to address did not pass edit checks/Card Association can't verify the authentication of an address")]
         BillToAddressDidNotPassEditChecksCardAssociationCantVerifyTheAuthenticationOfAnAddress,
 
-        [ResponseEnumValue("R")]
+        [EnumValueAttribute("R")]
         [Description("Retry - Issuer system unavailable, retry later")]
         RetryIssuerSystemUnavailable,
 
-        [ResponseEnumValue("S")]
+        [EnumValueAttribute("S")]
         [Description("Service not supported")]
         ServiceNotSupported,
 
-        [ResponseEnumValue("W")]
+        [EnumValueAttribute("W")]
         [Description("Partial match - ZIP Code matches, Street Address does not")]
         PartialMatchZIPCodeMatchesStreetAddressDoesNot,
 
-        [ResponseEnumValue("U")]
+        [EnumValueAttribute("U")]
         [Description("Unavailable - Address information is unavailable for that account number, or the card issuer does not support")]
         UnavailableAddressInformationIsUnavailableForThatAccountNumberOrTheCardIssuerDoesNotSupport,
 
-        [ResponseEnumValue("X")]
+        [EnumValueAttribute("X")]
         [Description("Exact match, 9 digit zip - Street Address, and 9 digit ZIP Code match")]
         ExactMatch9DigitZipStreetAddressAnd9DigitZIPCodeMatch,
 
-        [ResponseEnumValue("Y")]
+        [EnumValueAttribute("Y")]
         [Description("Exact match, 5 digit zip - Street Address, and 5 digit ZIP Code match")]
         ExactMatch5DigitZipStreetAddressAnd5DigitZIPCodeMatch,
 
-        [ResponseEnumValue("Z")]
+        [EnumValueAttribute("Z")]
         [Description("Partial match - 5 digit ZIP Code match only")]
         PartialMatch5DigitZIPCodeMatchOnly,
 
-        [ResponseEnumValue("1")]
+        [EnumValueAttribute("1")]
         [Description("Cardholder name matches")]
         CardholderNameMatches,
 
-        [ResponseEnumValue("2")]
+        [EnumValueAttribute("2")]
         [Description("Cardholder name, billing address, and postal code match")]
         CardholderNameBillingAddressAndPostalCodeMatch,
 
-        [ResponseEnumValue("3")]
+        [EnumValueAttribute("3")]
         [Description("Cardholder name and billing postal code match")]
         CardholderNameAndBillingPostalCodeMatch,
 
-        [ResponseEnumValue("4")]
+        [EnumValueAttribute("4")]
         [Description("Cardholder name and billing address match")]
         CardholderNameAndBillingAddressMatch,
 
-        [ResponseEnumValue("5")]
+        [EnumValueAttribute("5")]
         [Description("Cardholder name incorrect, billing address and postal code match")]
         CardholderNameIncorrectBillingAddressAndPostalCodeMatch,
 
-        [ResponseEnumValue("6")]
+        [EnumValueAttribute("6")]
         [Description("Cardholder name incorrect, billing postal code matches")]
         CardholderNameIncorrectBillingPostalCodeMatches,
 
-        [ResponseEnumValue("7")]
+        [EnumValueAttribute("7")]
         [Description("Cardholder name incorrect, billing address matches")]
         CardholderNameIncorrectBillingAddressMatches,
 
-        [ResponseEnumValue("8")]
+        [EnumValueAttribute("8")]
         [Description("Cardholder name, billing address, and postal code are all incorrect")]
         CardholderNameBillingAddressAndPostalCodeAreAllIncorrect
     }

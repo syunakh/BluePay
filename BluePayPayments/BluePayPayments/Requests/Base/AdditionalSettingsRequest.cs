@@ -19,14 +19,7 @@ namespace BluePayPayments.Requests.Base
         /// </summary>
         [ParamName("MEMO")]
         public string Memo { get; set; }
-
-        /// <summary>
-        /// Gets or sets the version.
-        /// Optional, Determines fields included in output. See output section below.
-        /// </summary>
-        [ParamName("VERSION")]
-        public string Version { get; set; } = "1";
-
+        
         /// <summary>
         /// Gets or sets the bp stamp definition.
         /// Optional, List of field names separated by spaces in the order they are to be used 

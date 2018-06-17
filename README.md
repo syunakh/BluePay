@@ -15,7 +15,7 @@ Install-Package BluePayPayments
 ## Example
 
 ```
-var bluePayClient = new BluePayClient(keys.AccountId, keys.SecretKey, !keys.Sandbox);
+var bluePayClient = new BluePayClient(accountId, secretKey, !sandbox);
 
 var request = new AuthorizeCreditCardRequest
 {
@@ -54,4 +54,43 @@ public class AuthorizeRequestWithBirthDate : AuthorizeCreditCardRequest
 }
 ```
 
-and use it for request
+and use it for request.
+
+The same for Response if you want use Version 2,3,4...
+You should inherit class BaseResponse and add needed fields with ParamName attribute.
+You should use generic methods for using the custom reponse type
+For example, 
+
+
+```
+public class SaleVersion3Response : BaseResponse
+{
+	[ParamName("BANK_NAME")
+	public string BankName {get; set;}
+	...
+	...
+
+}
+```
+
+```
+var bluePayClient = new BluePayClient(accountId, secretKey, !sandbox);
+
+var request = new SaleRequest
+{
+	CardNumber = "4111111111111111",
+	CVV = "123",
+	MonthExpiration = 12,
+	YearExpiration = DateTime.Now.AddYears(1).Year,
+	Amount = amount,
+	CustomerInfo = new CustomerInfo
+	{
+		FirstName = "Name",
+		LastName = "LastName"
+	},
+	Version = Version.Version3
+};
+
+var response = await bluePayClient.SaleAsync<SaleVersion3Response>(request);
+
+```
