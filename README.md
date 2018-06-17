@@ -41,13 +41,12 @@ var response = await bluePayClient.AuthorizeAsync(request);
 
 ## Extensibility
 
-Request classes can be extended if you need a parameter that is not implemented in the default request.
+If you need a parameter that is not implemented in the default request the Request classes can be extended.
 
-For Example,
+For example,
 
-if you want to add **BIRTHDATE** to you Authorize request.
-
-You should add this field by inherited of base class
+You need to add **BIRTHDATE** to your Authorize request
+You should create your class inheriting the base class and add needed parameters
 
 ```
 public class AuthorizeRequestWithBirthDate : AuthorizeCreditCardRequest
@@ -57,13 +56,11 @@ public class AuthorizeRequestWithBirthDate : AuthorizeCreditCardRequest
 }
 ```
 
-and use it for request.
+Then use this type for request.
 
-The same for Response if you want use Version 2,3,4...
+The same for Response: if you want use Version 2,3 or any other, you should inherit class BaseResponse and add needed fields with ParamName attribute.
 
-You should inherit class BaseResponse and add needed fields with ParamName attribute.
-
-You should use generic methods for using the custom reponse type
+Call generic methods for using the custom response type
 
 For example, 
 
