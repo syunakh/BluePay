@@ -44,7 +44,7 @@ namespace BluePayPayments
             return await AuthorizeAsync<BaseResponse>(request);
         }
 
-        public async Task<T> AuthorizeAsync<T>(AuthorizeRequest request) where T : BaseResponse, new()
+        public async Task<T> AuthorizeAsync<T>(AuthorizeRequest request) where T : BaseResponse
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -57,7 +57,7 @@ namespace BluePayPayments
             return await SaleAsync<BaseResponse>(request);
         }
 
-        public async Task<T> SaleAsync<T>(SaleRequest request) where T : BaseResponse, new()
+        public async Task<T> SaleAsync<T>(SaleRequest request) where T : BaseResponse
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -70,7 +70,7 @@ namespace BluePayPayments
             return await CaptureAsync<BaseResponse>(request);
         }
 
-        public async Task<T> CaptureAsync<T>(CaptureRequest request) where T : BaseResponse, new()
+        public async Task<T> CaptureAsync<T>(CaptureRequest request) where T : BaseResponse
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -83,7 +83,7 @@ namespace BluePayPayments
             return await RefundAsync<BaseResponse>(request);
         }
 
-        public async Task<T> RefundAsync<T>(RefundRequest request) where T : BaseResponse, new()
+        public async Task<T> RefundAsync<T>(RefundRequest request) where T : BaseResponse
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -96,7 +96,7 @@ namespace BluePayPayments
             return await VoidAsync<BaseResponse>(request);
         }
 
-        public async Task<T> VoidAsync<T>(VoidRequest request) where T : BaseResponse, new()
+        public async Task<T> VoidAsync<T>(VoidRequest request) where T : BaseResponse
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -109,7 +109,7 @@ namespace BluePayPayments
             return await UpdateAsync<BaseResponse>(request);
         }
 
-        public async Task<T> UpdateAsync<T>(UpdateRequest request) where T : BaseResponse, new()
+        public async Task<T> UpdateAsync<T>(UpdateRequest request) where T : BaseResponse
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -132,7 +132,7 @@ namespace BluePayPayments
             }
         }
 
-        protected async Task<T> SendAsync<T>(BaseRequest request, string calcMD5) where T : BaseResponse, new()
+        protected async Task<T> SendAsync<T>(BaseRequest request, string calcMD5) where T : BaseResponse
         {
             var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
 
@@ -142,7 +142,7 @@ namespace BluePayPayments
 
             var result = await response.Content.ReadAsStringAsync();
 
-            return result.ToBaseResponse<T>();
+            return (T)Activator.CreateInstance(typeof(T), new object[] { result }); // result.ToBaseResponse<T>();
         }
 
         protected string CalcTpsMd5(decimal? amount, string name, string paymentAccount, TransactionType transactionType, string transactionId = null)

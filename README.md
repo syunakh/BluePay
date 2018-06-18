@@ -69,6 +69,9 @@ For example,
 ```
 public class SaleVersion3Response : BaseResponse
 {
+	public SaleVersion3Response(string responseText) : base(responseText){
+	}
+	
 	[ParamName("BANK_NAME")
 	public string BankName {get; set;}
 	...

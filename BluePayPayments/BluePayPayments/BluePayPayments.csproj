@@ -7,12 +7,14 @@
     <PackageId>BluePayPayments</PackageId>
     <Description>BluePay .Net Gateway interface</Description>
     <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <PackageTags>BluePay, Payments, Creditcard, Merchant</PackageTags>
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/syunakh/BluePay</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/syunakh/BluePay/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>Added Lvl2 and Lvl3 information</PackageReleaseNotes>
+    <PackageReleaseNotes>Added body of response to Response Type</PackageReleaseNotes>
+    <AssemblyVersion>1.1.2</AssemblyVersion>
+    <FileVersion>1.1.2</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

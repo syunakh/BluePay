@@ -21,7 +21,7 @@ namespace BluePayPayments
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        Task<T> AuthorizeAsync<T>(AuthorizeRequest request) where T: BaseResponse, new();
+        Task<T> AuthorizeAsync<T>(AuthorizeRequest request) where T: BaseResponse;
 
         /// <summary>
         /// Captures the asynchronous.
@@ -36,7 +36,7 @@ namespace BluePayPayments
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        Task<T> CaptureAsync<T>(CaptureRequest request) where T : BaseResponse, new();
+        Task<T> CaptureAsync<T>(CaptureRequest request) where T : BaseResponse;
 
         /// <summary>
         /// Sales the asynchronous.
@@ -51,7 +51,7 @@ namespace BluePayPayments
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        Task<T> SaleAsync<T>(SaleRequest request) where T : BaseResponse, new();
+        Task<T> SaleAsync<T>(SaleRequest request) where T : BaseResponse;
 
         /// <summary>
         /// Refunds the asynchronous.
@@ -66,7 +66,7 @@ namespace BluePayPayments
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        Task<T> RefundAsync<T>(RefundRequest request) where T : BaseResponse, new();
+        Task<T> RefundAsync<T>(RefundRequest request) where T : BaseResponse;
 
         /// <summary>
         /// Voids the asynchronous.
@@ -81,7 +81,7 @@ namespace BluePayPayments
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        Task<T> VoidAsync<T>(VoidRequest request) where T : BaseResponse, new();
+        Task<T> VoidAsync<T>(VoidRequest request) where T : BaseResponse;
 
         /// <summary>
         /// Updates the asynchronous.
@@ -96,6 +96,6 @@ namespace BluePayPayments
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
         /// <returns></returns>
-        Task<T> UpdateAsync<T>(UpdateRequest request) where T : BaseResponse, new();
+        Task<T> UpdateAsync<T>(UpdateRequest request) where T : BaseResponse;
     }
 }
