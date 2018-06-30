@@ -5,16 +5,17 @@
     <Authors>Siarhei Yunakh</Authors>
     <Company>Siarhei Yunakh</Company>
     <PackageId>BluePayPayments</PackageId>
-    <Description>BluePay .Net Gateway interface</Description>
+    <Description>.Net BluePay interface</Description>
     <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <PackageTags>BluePay, Payments, Creditcard, Merchant</PackageTags>
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/syunakh/BluePay</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/syunakh/BluePay/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>Added body of response to Response Type</PackageReleaseNotes>
-    <AssemblyVersion>1.1.2</AssemblyVersion>
-    <FileVersion>1.1.2</FileVersion>
+    <PackageReleaseNotes>Fix issue with async methods</PackageReleaseNotes>
+    <AssemblyVersion>1.1.3</AssemblyVersion>
+    <FileVersion>1.1.3</FileVersion>
+    <Copyright>Siarhei Yunakh</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

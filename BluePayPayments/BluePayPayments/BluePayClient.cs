@@ -41,7 +41,7 @@ namespace BluePayPayments
 
         public async Task<BaseResponse> AuthorizeAsync(AuthorizeRequest request)
         {
-            return await AuthorizeAsync<BaseResponse>(request);
+            return await AuthorizeAsync<BaseResponse>(request).ConfigureAwait(false);
         }
 
         public async Task<T> AuthorizeAsync<T>(AuthorizeRequest request) where T : BaseResponse
@@ -49,12 +49,12 @@ namespace BluePayPayments
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             var calcMD5 = CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType);
-            return await SendAsync<T>(request, calcMD5);
+            return await SendAsync<T>(request, calcMD5).ConfigureAwait(false);
         }
 
         public async Task<BaseResponse> SaleAsync(SaleRequest request)
         {
-            return await SaleAsync<BaseResponse>(request);
+            return await SaleAsync<BaseResponse>(request).ConfigureAwait(false);
         }
 
         public async Task<T> SaleAsync<T>(SaleRequest request) where T : BaseResponse
@@ -62,12 +62,12 @@ namespace BluePayPayments
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             var calcMD5 = CalcTpsMd5(request.Amount, request.CustomerInfo?.FirstName, request.PaymentAccount, request.TransactionType);
-            return await SendAsync<T>(request, calcMD5);
+            return await SendAsync<T>(request, calcMD5).ConfigureAwait(false);
         }
 
         public async Task<BaseResponse> CaptureAsync(CaptureRequest request)
         {
-            return await CaptureAsync<BaseResponse>(request);
+            return await CaptureAsync<BaseResponse>(request).ConfigureAwait(false);
         }
 
         public async Task<T> CaptureAsync<T>(CaptureRequest request) where T : BaseResponse
@@ -75,12 +75,12 @@ namespace BluePayPayments
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
-            return await SendAsync<T>(request, calcMD5);
+            return await SendAsync<T>(request, calcMD5).ConfigureAwait(false);
         }
 
         public async Task<BaseResponse> RefundAsync(RefundRequest request)
         {
-            return await RefundAsync<BaseResponse>(request);
+            return await RefundAsync<BaseResponse>(request).ConfigureAwait(false);
         }
 
         public async Task<T> RefundAsync<T>(RefundRequest request) where T : BaseResponse
@@ -88,12 +88,12 @@ namespace BluePayPayments
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
-            return await SendAsync<T>(request, calcMD5);
+            return await SendAsync<T>(request, calcMD5).ConfigureAwait(false);
         }
 
         public async Task<BaseResponse> VoidAsync(VoidRequest request)
         {
-            return await VoidAsync<BaseResponse>(request);
+            return await VoidAsync<BaseResponse>(request).ConfigureAwait(false);
         }
 
         public async Task<T> VoidAsync<T>(VoidRequest request) where T : BaseResponse
@@ -101,12 +101,12 @@ namespace BluePayPayments
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             var calcMD5 = CalcTpsMd5(null, null, null, request.TransactionType, request.TransactionId);
-            return await SendAsync<T>(request, calcMD5);
+            return await SendAsync<T>(request, calcMD5).ConfigureAwait(false);
         }
 
         public async Task<BaseResponse> UpdateAsync(UpdateRequest request)
         {
-            return await UpdateAsync<BaseResponse>(request);
+            return await UpdateAsync<BaseResponse>(request).ConfigureAwait(false);
         }
 
         public async Task<T> UpdateAsync<T>(UpdateRequest request) where T : BaseResponse
@@ -114,7 +114,7 @@ namespace BluePayPayments
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             var calcMD5 = CalcTpsMd5(request.Amount, null, null, request.TransactionType, request.TransactionId);
-            return await SendAsync<T>(request, calcMD5);
+            return await SendAsync<T>(request, calcMD5).ConfigureAwait(false);
         }
 
         #region Private
@@ -136,11 +136,11 @@ namespace BluePayPayments
         {
             var prms = request.ToDictionaryParams(Mode, calcMD5, _apiAccountId);
 
-            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms));
+            var response = await BPHttpClient.PostAsync(ApiUrl, new FormUrlEncodedContent(prms)).ConfigureAwait(false);
 
             //response.EnsureSuccessStatusCode();
 
-            var result = await response.Content.ReadAsStringAsync();
+            var result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             return (T)Activator.CreateInstance(typeof(T), new object[] { result }); // result.ToBaseResponse<T>();
         }
