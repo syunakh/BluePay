@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Siarhei Yunakh</Authors>
     <Company>Siarhei Yunakh</Company>
     <PackageId>BluePayPayments</PackageId>
     <Description>.Net BluePay interface</Description>
     <RepositoryUrl>https://github.com/syunakh/BluePay</RepositoryUrl>
-    <Version>1.1.5</Version>
+    <Version>1.1.6</Version>
     <PackageTags>BluePay, Payments, Creditcard, Merchant</PackageTags>
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/syunakh/BluePay</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/syunakh/BluePay/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>Fix issue with async methods</PackageReleaseNotes>
-    <AssemblyVersion>1.1.5</AssemblyVersion>
-    <FileVersion>1.1.5</FileVersion>
+    <PackageReleaseNotes>Upgraded libraries and target framework</PackageReleaseNotes>
+    <AssemblyVersion>1.1.6</AssemblyVersion>
+    <FileVersion>1.1.6</FileVersion>
     <Copyright>Siarhei Yunakh</Copyright>
   </PropertyGroup>
 
